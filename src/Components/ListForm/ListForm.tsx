@@ -127,4 +127,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
   )
 }
 
+// npx json-server --watch data/db.json --port 3000
+
 export default ListForm
