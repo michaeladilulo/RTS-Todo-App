@@ -1,0 +1,23 @@
+.navigation-header {
+    background-color: #FFFFFF;;
+}
+
+.nav-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation-bar {
+    margin: 0px;
+    padding: 5px;
+    color: #000000;
+}
+
+.navlink {
+    padding: 20px;
+}
+
+a {
+    color: #000;
+}
