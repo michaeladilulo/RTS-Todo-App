@@ -2,6 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import './App.css'
 import RootLayout from "./Layouts/RootLayout";
 import CompleteLists from "./Pages/CompleteLists";
+import ListForm from "./Components/ListForm/ListForm";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
     <RouterProvider router={router} />
+    <ListForm />
     </>
     
     
