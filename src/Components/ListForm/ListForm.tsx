@@ -13,9 +13,12 @@ import './ListForm.css'
 const ListForm:FC = () => {
 
 const {register, handleSubmit} = useForm();
+const handleFormSubmit = (formData: any) => {
+  console.log('Form data is ', formData)
+}
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component='main' maxWidth='xs' className='form-container'>
       <Box 
       sx={{
         marginTop: 8,
@@ -23,67 +26,42 @@ const {register, handleSubmit} = useForm();
         flexDirection: 'column',
         alignItems: 'center'
       }}>
-      <Typography component='h1' variant='h5'>
+      <Typography component='h1' variant='h5' className='form-header-title' sx={{mt:4}}>
         Create New List
       </Typography>
-      <Box component='form' noValidate sx={{mt: 3}}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+      <Box component='form' noValidate sx={{mt: 3}} onSubmit={handleSubmit(handleFormSubmit)}>
+        <Grid container spacing={2} justifyContent={'center'}>
+          <Grid item xs={12} sm={8}>
             <TextField 
               autoComplete='given-name'
               required
               fullWidth
-              id='firstName'
-              label='First Name'
+              id='listTitle'
+              label='List Title'
               autoFocus
-              {...register('firstName')}
+              {...register('listTitle')}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={8}>
             <TextField 
               required
               fullWidth
-              id='lastName'
-              label='Last Name'
+              id='createdBy'
+              label='List Created By'
               autoComplete='family-name'
-              {...register('lastName')}
+              {...register('createdBy')}
             />
           </Grid>
-          <Grid item xs={12}>
-            <TextField 
-              required
-              fullWidth
-              id='emailaddress'
-              label='Email Address'
-              type='email'
-              autoComplete='email'
-              {...register('email')}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField 
-              required
-              fullWidth
-              id='password'
-              label='Password'
-              type='password'
-              autoComplete='new-password'
-              {...register('password')}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <FormControlLabel 
-            control={<Checkbox value='allowExtraEmails' color='primary' />}
-            label='I agree to receive emails related to product updates'
-            />
-          </Grid>
+            <Grid item xs={12} sm={8}>
+            <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            sx={{mt: 3, mb: 4}}
+            >Submit
+            </Button>
+            </Grid>
         </Grid>
-        <Button
-        type='submit'
-        fullWidth
-        variant='contained'
-        sx={{mt: 3, mb: 2}}
-        >Submit</Button>
       </Box>
       </Box>
     </Container>
