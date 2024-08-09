@@ -3,6 +3,7 @@ import './App.css'
 import RootLayout from "./Layouts/RootLayout";
 import CompleteLists from "./Pages/CompleteLists";
 import ListForm from "./Components/ListForm/ListForm";
+import ListCard from "./Components/ListCard/ListCard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ function App() {
     <>
     <RouterProvider router={router} />
     <ListForm />
+    <ListCard />
     </>
     
     

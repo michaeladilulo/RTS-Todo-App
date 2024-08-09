@@ -101,7 +101,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
               name='createdBy'
             />
           </Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={7}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker 
                 label='Select Start Date' 
