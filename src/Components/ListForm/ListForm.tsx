@@ -35,7 +35,48 @@ const ListForm:FC = () => {
               autoFocus
             />
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField 
+              required
+              fullWidth
+              id='lastName'
+              label='Last Name'
+              autoComplete='family-name'
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField 
+              required
+              fullWidth
+              id='emailaddress'
+              label='Email Address'
+              type='email'
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField 
+              required
+              fullWidth
+              id='password'
+              label='Password'
+              type='password'
+            />
+          </Grid>
+          <Grid item xs={12} display={'flex'}>
+            <Checkbox
+              id='checkbox'
+            />
+            <Typography>
+              I agree to receive emails related to product updates
+            </Typography>
+          </Grid>
         </Grid>
+        <Button
+        type='submit'
+        fullWidth
+        variant='contained'
+        sx={{mt: 3, mb: 2}}
+        >Submit</Button>
       </Box>
       </Box>
     </Container>
