@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import './RootLayout.css';
 
-function RootLayout() {
+const RootLayout: FC = () => {
   return (
     <div>
         <header className='navigation-header'>

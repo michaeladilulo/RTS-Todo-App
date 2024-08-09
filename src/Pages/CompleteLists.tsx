@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-function CompleteLists() {
+const CompleteLists: FC = () => {
   return (
     <div>CompleteLists</div>
   )
