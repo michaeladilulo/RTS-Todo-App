@@ -7,9 +7,13 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useForm } from 'react-hook-form'
 import './ListForm.css'
 
 const ListForm:FC = () => {
+
+const {register, handleSubmit} = useForm();
+
   return (
     <Container component='main' maxWidth='xs'>
       <Box 
@@ -27,12 +31,12 @@ const ListForm:FC = () => {
           <Grid item xs={12} sm={6}>
             <TextField 
               autoComplete='given-name'
-              name='firstName'
               required
               fullWidth
               id='firstName'
               label='First Name'
               autoFocus
+              {...register('firstName')}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -42,6 +46,7 @@ const ListForm:FC = () => {
               id='lastName'
               label='Last Name'
               autoComplete='family-name'
+              {...register('lastName')}
             />
           </Grid>
           <Grid item xs={12}>
@@ -51,6 +56,8 @@ const ListForm:FC = () => {
               id='emailaddress'
               label='Email Address'
               type='email'
+              autoComplete='email'
+              {...register('email')}
             />
           </Grid>
           <Grid item xs={12}>
@@ -60,15 +67,15 @@ const ListForm:FC = () => {
               id='password'
               label='Password'
               type='password'
+              autoComplete='new-password'
+              {...register('password')}
             />
           </Grid>
-          <Grid item xs={12} display={'flex'}>
-            <Checkbox
-              id='checkbox'
+          <Grid item xs={12}>
+            <FormControlLabel 
+            control={<Checkbox value='allowExtraEmails' color='primary' />}
+            label='I agree to receive emails related to product updates'
             />
-            <Typography>
-              I agree to receive emails related to product updates
-            </Typography>
           </Grid>
         </Grid>
         <Button
