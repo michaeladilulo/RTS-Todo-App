@@ -1,18 +1,65 @@
-import React, { FC } from 'react'
+import React, { ChangeEvent, FC, useState } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useForm } from 'react-hook-form'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import dayjs, { Dayjs } from 'dayjs';
+import axios from 'axios'
 import './ListForm.css'
 
-const ListForm:FC = () => {
+type FormData = {
+  title: string,
+  createdBy: string,
+  startDate: Dayjs | null,
+  completed: boolean
+}
 
-const {register, handleSubmit} = useForm();
-const handleFormSubmit = (formData: any) => {
-  console.log('Form data is ', formData)
+const ListForm:FC = () => {
+const [formData, setFormData] = useState<FormData>({
+  title: '',
+  createdBy: '',
+  startDate: null,
+  completed: false
+});
+
+const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  const {name, value} = e.target;
+  setFormData(previousState => ({
+    ...previousState,
+    [name]: value
+  }))
+}
+
+const handleDateChange = (date: Dayjs | null): void => {
+  setFormData((previousState) => ({
+    ...previousState,
+    startDate: date
+  }));
+};
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  e.preventDefault();
+
+  try {
+    const response = await axios.post(`http://localhost:3000/list`,
+      formData
+    )
+    console.log(response.data)
+
+    setFormData({
+      title: '',
+      createdBy: '',
+      startDate: null,
+      completed: false
+    })
+  } catch (error) {
+    console.error('Error', error)
+  }
 }
 
   return (
@@ -27,7 +74,7 @@ const handleFormSubmit = (formData: any) => {
       <Typography component='h1' variant='h5' className='form-header-title' sx={{mt:4}}>
         Create New List
       </Typography>
-      <Box component='form' noValidate sx={{mt: 3}} onSubmit={handleSubmit(handleFormSubmit)}>
+      <Box component='form' noValidate sx={{mt: 3}} onSubmit={handleSubmit}>
         <Grid container spacing={2} justifyContent={'center'}>
           <Grid item xs={12} sm={8}>
             <TextField 
@@ -36,8 +83,10 @@ const handleFormSubmit = (formData: any) => {
               fullWidth
               id='listTitle'
               label='List Title'
+              onChange={handleChange}
+              value={formData.title}
+              name='title'
               autoFocus
-              {...register('listTitle')}
             />
           </Grid>
           <Grid item xs={12} sm={8}>
@@ -47,8 +96,20 @@ const handleFormSubmit = (formData: any) => {
               id='createdBy'
               label='List Created By'
               autoComplete='family-name'
-              {...register('createdBy')}
+              onChange={handleChange}
+              value={formData.createdBy}
+              name='createdBy'
             />
+          </Grid>
+          <Grid item xs={12} sm={8}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker 
+                label='Select Start Date' 
+                name='datePicker' 
+                value={formData.startDate} 
+                onChange={handleDateChange}
+                />
+              </LocalizationProvider>
           </Grid>
             <Grid item xs={12} sm={8}>
             <Button
