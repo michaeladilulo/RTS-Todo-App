@@ -8,17 +8,10 @@
       "id": "90e5"
     },
     {
-      "id": "441f",
-      "title": "Shopping",
-      "createdBy": "Mike",
-      "startDate": "2024-08-16T06:00:00.000Z",
-      "completed": false
-    },
-    {
-      "id": "cc4a",
+      "id": "bb98",
       "title": "Housework",
-      "createdBy": "Maya",
-      "startDate": "2024-08-10T06:00:00.000Z",
+      "createdBy": "Mike",
+      "completionGoal": "2024-08-24T06:00:00.000Z",
       "completed": false
     }
   ]

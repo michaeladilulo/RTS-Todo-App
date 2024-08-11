@@ -1,7 +1,7 @@
 export type List = {
     createdBy: string;
     title: string;
-    startDate: string; //Date
+    completionGoal: string; //Date
     completedOn: string; //Date
     complete: boolean;
 }

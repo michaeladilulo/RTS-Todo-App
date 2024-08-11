@@ -15,7 +15,7 @@ import './ListForm.css'
 type FormData = {
   title: string,
   createdBy: string,
-  startDate: Dayjs | null,
+  completionGoal: Dayjs | null,
   completed: boolean
 }
 
@@ -23,7 +23,7 @@ const ListForm:FC = () => {
 const [formData, setFormData] = useState<FormData>({
   title: '',
   createdBy: '',
-  startDate: null,
+  completionGoal: null,
   completed: false
 });
 
@@ -38,7 +38,7 @@ const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
 const handleDateChange = (date: Dayjs | null): void => {
   setFormData((previousState) => ({
     ...previousState,
-    startDate: date
+    completionGoal: date
   }));
 };
 
@@ -54,7 +54,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
     setFormData({
       title: '',
       createdBy: '',
-      startDate: null,
+      completionGoal: null,
       completed: false
     })
   } catch (error) {
@@ -104,9 +104,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
           <Grid item xs={12} sm={7}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker 
-                label='Select Start Date' 
+                label='Select Completion Date' 
                 name='datePicker' 
-                value={formData.startDate} 
+                value={formData.completionGoal} 
                 onChange={handleDateChange}
                 />
               </LocalizationProvider>
