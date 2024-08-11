@@ -1,17 +1,10 @@
 {
   "list": [
     {
-      "title": "Shopping",
+      "id": "d358",
+      "title": "YardWork",
       "createdBy": "Mike",
-      "startDate": "12-20-2024",
-      "completed": false,
-      "id": "90e5"
-    },
-    {
-      "id": "bb98",
-      "title": "Housework",
-      "createdBy": "Mike",
-      "completionGoal": "2024-08-24T06:00:00.000Z",
+      "completionGoal": "2024-08-17T06:00:00.000Z",
       "completed": false
     }
   ]

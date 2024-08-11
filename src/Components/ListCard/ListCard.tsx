@@ -34,10 +34,6 @@ const ListCard:FC<CardProps> = ({createdBy, completionGoal, title, completedOn})
         </span>
       </div>
       </div>
-
-      <div>
-      </div>
-
     </div>
   )
 }
