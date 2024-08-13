@@ -38,7 +38,7 @@ const ListCard:FC<CardProps> = ({createdBy, completionGoal, title, completedOn})
         <input type ='checkbox' className='list-checkbox' onChange={handleChange}/> <span className='list-completed'>Completed</span>
         </span>
         <span>
-          <span>Completed On: {completedOn} {listComplete && completionDate ? completionDate : null}</span>
+          <span className='list-completed-on-data'>Completed On: {completedOn} {listComplete && completionDate ? completionDate : null}</span>
         </span>
       </div>
       </div>

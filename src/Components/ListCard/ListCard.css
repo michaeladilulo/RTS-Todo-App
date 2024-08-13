@@ -57,6 +57,9 @@
 }
 
 .card-checkbox {
-    display: flex;
-    align-items: center;
+    display: table;
+}
+
+.list-completed-on-data {
+    margin-left: -140px;
 }

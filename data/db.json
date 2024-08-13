@@ -1,27 +1,6 @@
 {
   "list": [
     {
-      "id": "d358",
-      "title": "YardWork",
-      "createdBy": "Mike",
-      "completionGoal": "2024-08-17T06:00:00.000Z",
-      "completed": false
-    },
-    {
-      "id": "5760",
-      "title": "Shopping",
-      "createdBy": "Maya",
-      "completionGoal": "2024-08-17T06:00:00.000Z",
-      "completed": false
-    },
-    {
-      "id": "8f08",
-      "title": "Treats",
-      "createdBy": "Maya",
-      "completionGoal": "2024-08-24T06:00:00.000Z",
-      "completed": false
-    },
-    {
       "id": "082b",
       "title": "Plants",
       "createdBy": "Cindy",
