@@ -36,6 +36,7 @@ function App() {
     <>
     <RouterProvider router={router} />
     <ListForm />
+    <div className='list-card-container'>
     {/* Array of Objects */}
     {list && Array.isArray(list) && list.length > 0 ? (
       list.map(x => (
@@ -46,6 +47,7 @@ function App() {
     ) : (
       <div>No Data To Display</div>
     )}
+    </div>
     </>
   )
 }

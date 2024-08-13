@@ -1,3 +1,9 @@
+.list-card-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
 .list-card {
     margin-top: 50px;
 }

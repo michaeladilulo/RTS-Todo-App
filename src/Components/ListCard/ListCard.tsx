@@ -1,8 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import './ListCard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Checkbox } from '@mui/material';
 
 interface CardProps {
   createdBy: string,
@@ -12,6 +11,15 @@ interface CardProps {
 }
 
 const ListCard:FC<CardProps> = ({createdBy, completionGoal, title, completedOn}) => {
+  const [listComplete, setListComplete] = useState(false);
+  const [completionDate, setCompletionDate] = useState<string | null>(null);
+
+  const handleChange = (event: { target: { checked: boolean; }; }) => {
+    setListComplete(event.target.checked)
+
+    event.target.checked === true ? setCompletionDate(new Date().toISOString().substring(0, 10)) : setCompletionDate(null);
+  }
+
   return (
     <div className='card-container'>
       <div className='card-content'>
@@ -27,10 +35,10 @@ const ListCard:FC<CardProps> = ({createdBy, completionGoal, title, completedOn})
       </div>
       <div className='card-footer'>
         <span className='card-checkbox'>
-        <Checkbox /> <span className='list-completed'>Completed</span>
+        <input type ='checkbox' className='list-checkbox' onChange={handleChange}/> <span className='list-completed'>Completed</span>
         </span>
         <span>
-          <span>Completed On: {completedOn}</span>
+          <span>Completed On: {completedOn} {listComplete && completionDate ? completionDate : null}</span>
         </span>
       </div>
       </div>

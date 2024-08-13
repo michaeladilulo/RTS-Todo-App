@@ -15,7 +15,7 @@ import './ListForm.css'
 type FormData = {
   title: string,
   createdBy: string,
-  completionGoal: Dayjs | null,
+  completionGoal?: string | null,
   completed: boolean
 }
 
@@ -35,11 +35,9 @@ const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
   }))
 }
 
-const handleDateChange = (date: Dayjs | null): void => {
-  setFormData((previousState) => ({
-    ...previousState,
-    completionGoal: date
-  }));
+const handleDateChange = (newDate: Dayjs | null): void => {
+  const formattedDate = newDate?.format('YYYY-MM-DD');
+  setFormData({...formData, completionGoal: formattedDate})
 };
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -106,7 +104,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
                 <DatePicker 
                 label='Select Completion Date' 
                 name='datePicker' 
-                value={formData.completionGoal} 
+                value={formData.completionGoal ? dayjs(formData.completionGoal) : null} 
                 onChange={handleDateChange}
                 />
               </LocalizationProvider>
