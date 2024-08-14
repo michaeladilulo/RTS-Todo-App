@@ -1,11 +1,12 @@
 {
   "list": [
     {
-      "id": "082b",
-      "title": "Plants",
-      "createdBy": "Cindy",
-      "completionGoal": "2024-08-31",
-      "completed": false
+      "completionGoal": "2024-08-24",
+      "completedOn": "2024-08-14",
+      "createdBy": "Mike",
+      "title": "Take Karinna to Boise Open",
+      "id": "01b6",
+      "completed": true
     }
   ]
 }

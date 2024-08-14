@@ -6,3 +6,11 @@
 .form-header-title {
     color: #000000;
 }
+
+.css-yyvcc2-MuiTypography-root {
+    display: none;
+}
+
+.form-input-checkbox {
+    display: none;
+}

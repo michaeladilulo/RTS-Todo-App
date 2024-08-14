@@ -30,7 +30,7 @@ function App() {
     };
 
     fetchLists();
-  })
+  }, [])
 
   return (
     <>
@@ -41,7 +41,7 @@ function App() {
     {list && Array.isArray(list) && list.length > 0 ? (
       list.map(x => (
         <div className='list-card' key={x.id}>
-          <ListCard createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn}/>
+          <ListCard createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed}/>
         </div>
       ))
     ) : (

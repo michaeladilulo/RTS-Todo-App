@@ -3,5 +3,6 @@ export type List = {
     title: string;
     completionGoal: string; //Date
     completedOn: string; //Date
-    complete: boolean;
+    completed: boolean;
+    id: string;
 }

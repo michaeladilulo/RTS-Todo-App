@@ -16,7 +16,7 @@ type FormData = {
   title: string,
   createdBy: string,
   completionGoal?: string | null,
-  completed: boolean
+  completed: boolean,
 }
 
 const ListForm:FC = () => {
@@ -28,10 +28,10 @@ const [formData, setFormData] = useState<FormData>({
 });
 
 const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-  const {name, value} = e.target;
+  const {name, value, type, checked} = e.target;
   setFormData(previousState => ({
     ...previousState,
-    [name]: value
+    [name]: type === 'checkbox' ? checked : value
   }))
 }
 
@@ -109,6 +109,19 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
                 />
               </LocalizationProvider>
           </Grid>
+          <Grid item xs={12} sm={8}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <input
+                  type='checkbox'
+                  id='completed'
+                  name='completed'
+                  checked={formData.completed}
+                  onChange={handleChange}
+                  className='form-input-checkbox'
+                />
+                <Typography sx={{ ml: 1 }}>Completed</Typography>
+              </Box>
+            </Grid>
             <Grid item xs={12} sm={8}>
             <Button
             type='submit'

@@ -63,3 +63,21 @@
 .list-completed-on-data {
     margin-left: -140px;
 }
+
+.list-form-button {
+    max-width: 200px;
+}
+
+.list-form-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.css-ke5b6m-MuiButtonBase-root-MuiButton-root {
+    height: 5px !important;
+    font-size: 7px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
