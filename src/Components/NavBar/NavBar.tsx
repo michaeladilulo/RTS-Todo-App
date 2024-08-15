@@ -1,17 +1,17 @@
 import React, { FC } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
-import './RootLayout.css';
+import { Link, Outlet } from 'react-router-dom'
+import './NavBar.css';
 
-const RootLayout: FC = () => {
+const NavBar: FC = () => {
   return (
     <div>
         <header className='navigation-header'>
             <nav className='nav-bar-container'>
                 <h1 className='navigation-bar'>RTS Todo App</h1>
                 <span className='navlink'>
-                    <NavLink to="/">Home</NavLink>
+                    <Link to='/'>Home</Link>
                     <span className='navlink'>
-                    <NavLink to="completed">Completed</NavLink>
+                    <Link to='/completed'>Completed</Link>
                     </span>
                 </span>
             </nav>
@@ -25,4 +25,4 @@ const RootLayout: FC = () => {
   )
 }
 
-export default RootLayout
+export default NavBar
