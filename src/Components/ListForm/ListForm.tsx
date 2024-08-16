@@ -19,7 +19,11 @@ type FormData = {
   completed: boolean,
 }
 
-const ListForm:FC = () => {
+type ListFormProps = {
+  renderingLists: any;
+}
+
+const ListForm:FC<ListFormProps> = ({renderingLists}) => {
 const [formData, setFormData] = useState<FormData>({
   title: '',
   createdBy: '',
@@ -48,6 +52,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
       formData
     )
     console.log(response.data)
+    renderingLists(response.data)
 
     setFormData({
       title: '',

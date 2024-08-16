@@ -1,11 +1,15 @@
 import ListForm from "../Components/ListForm/ListForm";
 import ListCard from "../Components/ListCard/ListCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from 'axios';
 import { List } from '../Types/Types';
 
 function Home() {
   const [list, setList] = useState<any | null>(null)
+  
+  const renderLists = useCallback((renderingList: any) => {
+    setList([...list, renderingList])
+  }, [list])
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -22,7 +26,7 @@ function Home() {
 
   return (
     <>
-    <ListForm />
+    <ListForm renderingLists={renderLists}/>
     <div className='list-card-container'>
     {/* Array of Objects */}
     {list && Array.isArray(list) && list.length > 0 ? (
