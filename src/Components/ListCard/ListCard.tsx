@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import DeleteIconTrash from '../TrashDeleteIcon/TrashDeleteIcon';
 import axios from 'axios';
 import dayjs from 'dayjs';
@@ -17,6 +17,11 @@ interface CardProps {
 const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed}) => {
   const [listComplete, setListComplete] = useState<boolean>(completed ?? false);
   const [completionDate, setCompletionDate] = useState<string | null>(completedOn ?? '');
+  const [list, setList] = useState<any[]>([])
+
+  const renderLists = useCallback((renderingList: any) => {
+    setList((prevList) => [...prevList, renderingList])
+  }, [list])
 
   const [creationBy, setCreatedBy] = useState('')
   const [cardTitle, setCardTitle] = useState('')
@@ -95,7 +100,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
 
   return (
     <span className='card-container'>
-    <DeleteIconTrash id={id} />    
+    <DeleteIconTrash id={id} renderingLists={renderLists}/>    
     <form onSubmit={handleSubmit}>
       <div className='card-content'>
       <div>

@@ -1,21 +1,23 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import './TrashDeleteIcon.css'
 import axios from 'axios'
 
 type TrashDeleteIconProps = {
-    id: string
+    id: string;
+    renderingLists: any;
 }
 
-const TrashDeleteIcon:FC<TrashDeleteIconProps> = ({id}) => {
-    
+const TrashDeleteIcon:FC<TrashDeleteIconProps> = ({id, renderingLists}) => {
+
     const handleClick = async () => {
         try {
-            await axios.delete(`http://localhost:3000/list/${id}`, {
+           const response = await axios.delete(`http://localhost:3000/list/${id}`, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-
+            console.log(response.data)
+            renderingLists(response.data);
         } catch (error) {
             console.error(error)
         }
