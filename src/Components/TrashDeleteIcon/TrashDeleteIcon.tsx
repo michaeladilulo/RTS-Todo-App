@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import './TrashDeleteIcon.css'
 import axios from 'axios'
 

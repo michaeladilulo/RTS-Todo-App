@@ -14,7 +14,6 @@ interface ListItem {
 const ListContainer: FC = () => {
   const [list, setList] = useState<ListItem[]>([]);
 
-  // Fetch the list of items when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,7 +27,6 @@ const ListContainer: FC = () => {
     fetchData();
   }, []);
 
-  // Handle item deletion by updating the list state
   const renderLists = useCallback((deletedItemId: string) => {
     setList((prevList) => prevList.filter((item) => item.id !== deletedItemId));
   }, []);
@@ -44,7 +42,7 @@ const ListContainer: FC = () => {
           title={listItem.title}
           completedOn={listItem.completedOn}
           completed={listItem.completed}
-          renderingLists={renderLists} // Pass the callback to the ListCard component
+          renderingLists={renderLists} 
         />
       ))}
     </div>

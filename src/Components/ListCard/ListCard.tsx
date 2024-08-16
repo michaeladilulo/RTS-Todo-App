@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import DeleteIconTrash from '../TrashDeleteIcon/TrashDeleteIcon';
 import axios from 'axios';
 import dayjs from 'dayjs';
@@ -56,7 +56,6 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
     }
   };
 
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = {
@@ -78,8 +77,6 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
       console.error('Error submitting form data:', error);
     }
   };
-
-
 
   return (
     <span className='card-container'>

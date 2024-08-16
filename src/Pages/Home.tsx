@@ -7,13 +7,13 @@ import { List } from '../Types/Types';
 function Home() {
   const [list, setList] = useState<any | null>(null)
   
-  
+
   const renderLists = useCallback(
     (listItem: any, requestType: 'POST' | 'DELETE') => {
       setList((list: any[]) => 
         requestType === 'POST' 
-          ? [...list, listItem] // Add the new item in case of a POST request
-          : list.filter((item) => item.id !== listItem.id) // Remove the item in case of a DELETE request
+          ? [...list, listItem]
+          : list.filter((item) => item.id !== listItem.id)
       );
     },
     []
