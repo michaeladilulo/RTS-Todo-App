@@ -12,35 +12,16 @@ interface CardProps {
   completedOn: string | null,
   id: string;
   completed?: boolean;
+  renderingLists: (listItem: any, requestType: 'POST' | 'DELETE') => void;
 }
 
-const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed}) => {
+const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed, renderingLists}) => {
   const [listComplete, setListComplete] = useState<boolean>(completed ?? false);
   const [completionDate, setCompletionDate] = useState<string | null>(completedOn ?? '');
-  const [list, setList] = useState<any[]>([])
-
-  const renderLists = useCallback((renderingList: any) => {
-    setList((prevList) => [...prevList, renderingList])
-  }, [list])
 
   const [creationBy, setCreatedBy] = useState('')
   const [cardTitle, setCardTitle] = useState('')
   const [cardId, setCardId] = useState('')
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3000/list/${id}`);
-        const data = response.data;
-        setListComplete(response.data.completed);
-        setCompletionDate(response.data.completedOn ?? completedOn);
-      } catch (error) {
-        console.error('Error Fetching List Data', error)
-      }
-    };
-
-    fetchData();
-  }, [id])
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const date = dayjs().format('YYYY-MM-DD');
@@ -98,9 +79,11 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
     }
   };
 
+
+
   return (
     <span className='card-container'>
-    <DeleteIconTrash id={id} renderingLists={renderLists}/>    
+    <DeleteIconTrash id={id} renderingLists={renderingLists}/>    
     <form onSubmit={handleSubmit}>
       <div className='card-content'>
       <div>

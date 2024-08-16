@@ -4,7 +4,7 @@ import axios from 'axios'
 
 type TrashDeleteIconProps = {
     id: string;
-    renderingLists: any;
+    renderingLists: (listItem: any, requestType: 'POST' | 'DELETE') => void;
 }
 
 const TrashDeleteIcon:FC<TrashDeleteIconProps> = ({id, renderingLists}) => {
@@ -16,8 +16,9 @@ const TrashDeleteIcon:FC<TrashDeleteIconProps> = ({id, renderingLists}) => {
                     'Content-Type': 'application/json'
                 }
             })
+            console.log('RESPONSE', response)
             console.log(response.data)
-            renderingLists(response.data);
+            renderingLists({ id }, 'DELETE');
         } catch (error) {
             console.error(error)
         }

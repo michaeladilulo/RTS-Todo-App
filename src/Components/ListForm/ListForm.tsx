@@ -20,7 +20,7 @@ type FormData = {
 }
 
 type ListFormProps = {
-  renderingLists: any;
+  renderingLists: (listItem: any, requstType: 'POST' | 'DELETE') => void;
 }
 
 const ListForm:FC<ListFormProps> = ({renderingLists}) => {
@@ -52,7 +52,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> 
       formData
     )
     console.log(response.data)
-    renderingLists(response.data)
+    renderingLists(response.data, 'POST')
 
     setFormData({
       title: '',

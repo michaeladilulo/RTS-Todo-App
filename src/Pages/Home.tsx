@@ -7,9 +7,17 @@ import { List } from '../Types/Types';
 function Home() {
   const [list, setList] = useState<any | null>(null)
   
-  const renderLists = useCallback((renderingList: any) => {
-    setList([...list, renderingList])
-  }, [list])
+  
+  const renderLists = useCallback(
+    (listItem: any, requestType: 'POST' | 'DELETE') => {
+      setList((list: any[]) => 
+        requestType === 'POST' 
+          ? [...list, listItem] // Add the new item in case of a POST request
+          : list.filter((item) => item.id !== listItem.id) // Remove the item in case of a DELETE request
+      );
+    },
+    []
+  );
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -32,7 +40,7 @@ function Home() {
     {list && Array.isArray(list) && list.length > 0 ? (
       list.map(x => (
         <div className='list-card' key={x.id}>
-          <ListCard createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed}/>
+          <ListCard createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed} renderingLists={renderLists} />
         </div>
       ))
     ) : (
