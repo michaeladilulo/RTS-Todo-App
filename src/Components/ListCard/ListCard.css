@@ -19,12 +19,6 @@
     flex: 1 0 auto;
 }
 
-.card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
 .card-header-create-complete {
     display: flex;
     flex-direction: column;
@@ -34,11 +28,6 @@
 
 .card-created-by {
     font-size: 10px;
-}
-
-.font-awesome-trash {
-    color: red;
-    font-size: 12px;
 }
 
 .list-title {

@@ -7,30 +7,6 @@
       "title": "Take Karinna to Boise Open",
       "id": "01b6",
       "completed": true
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-14",
-      "createdBy": "Mike",
-      "title": "Coding",
-      "id": "7c2e",
-      "completed": true
-    },
-    {
-      "completionGoal": "2024-08-24",
-      "completedOn": "2024-08-15",
-      "createdBy": "Mike",
-      "title": "Housework",
-      "id": "cbd1",
-      "completed": true
-    },
-    {
-      "completionGoal": "2024-08-31",
-      "completedOn": "2024-08-15",
-      "createdBy": "Mike",
-      "title": "Yardwork",
-      "id": "6ed4",
-      "completed": true
     }
   ]
 }

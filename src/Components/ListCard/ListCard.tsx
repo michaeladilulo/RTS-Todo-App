@@ -1,10 +1,9 @@
-import React, { FC, useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios'
-import './ListCard.css'
+import React, { FC, useEffect, useState } from 'react';
+import DeleteIconTrash from '../TrashDeleteIcon/TrashDeleteIcon';
+import axios from 'axios';
 import dayjs from 'dayjs';
 import { Button } from '@mui/material';
+import './ListCard.css';
 
 interface CardProps {
   createdBy: string,
@@ -94,11 +93,12 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
     }
   };
 
-  return (      
-    <form onSubmit={handleSubmit} className='card-container'>
+  return (
+    <span className='card-container'>
+    <DeleteIconTrash id={id} />    
+    <form onSubmit={handleSubmit}>
       <div className='card-content'>
-      <div className='card-header'>
-        <FontAwesomeIcon icon={faTrash} className='font-awesome-trash'/>
+      <div>
         <span className='card-header-create-complete'>
         <span className='card-created-by'>Created By: {createdBy}</span>
         <span className='card-created-by'>Completion Goal: {completionGoal}</span>
@@ -120,6 +120,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
       <Button variant='contained' color='success' type='submit' className='list-form-button'>Save Changes</Button>
       </div>
     </form>
+    </span>      
   )
 }
 
