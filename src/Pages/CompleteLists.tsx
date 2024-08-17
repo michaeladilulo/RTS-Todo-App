@@ -10,11 +10,11 @@ function completedLists () {
 
   const renderLists = useCallback(
     (listItem: any, requestType: 'POST' | 'DELETE') => {
-      setIncompleteList((list: any[]) => 
-        requestType === 'POST' 
-          ? [...list, listItem]
-          : list.filter((item) => item.id !== listItem.id)
-      );
+      // setIncompleteList((list: any[]) => 
+      //   requestType === 'POST' 
+      //     ? [...list, listItem]
+      //     : list.filter((item) => item.id !== listItem.id)
+      // );
     },
     []
   );
