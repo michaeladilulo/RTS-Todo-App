@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import './TrashDeleteIcon.css'
+import './ListDeleteIcon.css'
 import axios from 'axios'
 
 type TrashDeleteIconProps = {

@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import DeleteIconTrash from '../TrashDeleteIcon/TrashDeleteIcon';
+import ListDeleteIcon from '../ListDeleteIcon/ListDeleteIcon';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import './ListCard.css';
@@ -49,7 +49,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
 
   return (
     <span className='card-container'>
-    <DeleteIconTrash id={id} renderingLists={renderingLists}/>    
+    <ListDeleteIcon id={id} renderingLists={renderingLists}/>    
     <div>
       <div className='card-content'>
       <div>
