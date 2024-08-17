@@ -2,11 +2,35 @@
   "list": [
     {
       "completionGoal": "2024-08-24",
-      "completedOn": "2024-08-14",
+      "completedOn": "2024-08-16",
       "createdBy": "Mike",
-      "title": "Take Karinna to Boise Open",
-      "id": "01b6",
+      "title": "Coding",
+      "id": "1a5f",
+      "completed": false
+    },
+    {
+      "completionGoal": "2024-08-17",
+      "completedOn": "2024-08-16",
+      "createdBy": "Mike",
+      "title": "Pet Maya",
+      "id": "aec7",
       "completed": true
+    },
+    {
+      "completionGoal": "2024-08-24",
+      "completedOn": "2024-08-16",
+      "createdBy": "Mike",
+      "title": "Shopping",
+      "id": "e808",
+      "completed": true
+    },
+    {
+      "completionGoal": "2024-09-01",
+      "completedOn": "2024-08-16",
+      "createdBy": "Mike",
+      "title": "Pay Rent",
+      "id": "946e",
+      "completed": false
     }
   ]
 }

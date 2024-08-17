@@ -5,12 +5,13 @@ import axios from 'axios';
 import { List } from '../Types/Types';
 
 function Home() {
-  const [list, setList] = useState<any | null>(null)
+  const [incompleteList, setIncompleteList] = useState<any | null>(null);
+  const [filteredList, setFilteredList] = useState<any | null>(null);
   
 
   const renderLists = useCallback(
     (listItem: any, requestType: 'POST' | 'DELETE') => {
-      setList((list: any[]) => 
+      setIncompleteList((list: any[]) => 
         requestType === 'POST' 
           ? [...list, listItem]
           : list.filter((item) => item.id !== listItem.id)
@@ -23,7 +24,9 @@ function Home() {
     const fetchLists = async () => {
       try {
         const response = await axios.get<List[]>('http://localhost:3000/list');
-        setList(response.data);
+        setIncompleteList(response.data);
+        const filteredList = response.data.filter(item => item.completed !== true);
+        setFilteredList(filteredList);
       } catch (error) {
         console.error('Error Fetching Items:', error)
       }
@@ -37,8 +40,8 @@ function Home() {
     <ListForm renderingLists={renderLists}/>
     <div className='list-card-container'>
     {/* Array of Objects */}
-    {list && Array.isArray(list) && list.length > 0 ? (
-      list.map(x => (
+    {filteredList && Array.isArray(filteredList) && filteredList.length > 0 ? (
+      filteredList.map(x => (
         <div className='list-card' key={x.id}>
           <ListCard createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed} renderingLists={renderLists} />
         </div>
