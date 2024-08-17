@@ -38,7 +38,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
     try {
       await axios.put(`http://localhost:3000/list/${id}`, {
         completionGoal: completionGoal,
-        completedOn: date ? date : null,
+        completedOn: isChecked ? date : null,
         createdBy: createdBy,
         title: title,
         id: id,
