@@ -1,5 +1,4 @@
-import React, { FC } from 'react'
-import ListForm from "../Components/ListForm/ListForm";
+import React from 'react'
 import ListCard from "../Components/ListCard/ListCard";
 import { useEffect, useState, useCallback } from "react";
 import axios from 'axios';
@@ -24,7 +23,6 @@ function completedLists () {
     const fetchLists = async () => {
       try {
         const response = await axios.get<List[]>('http://localhost:3000/list');
-        setIncompleteList(response.data);
         const filteredList = response.data.filter(item => item.completed == true);
         setFilteredList(filteredList);
       } catch (error) {
@@ -33,11 +31,10 @@ function completedLists () {
     };
 
     fetchLists();
-  }, [])
+  }, [filteredList])
 
   return (
     <>
-    <ListForm renderingLists={renderLists}/>
     <div className='list-card-container'>
     {/* Array of Objects */}
     {filteredList && Array.isArray(filteredList) && filteredList.length > 0 ? (

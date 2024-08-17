@@ -11,7 +11,7 @@ function Home() {
 
   const renderLists = useCallback(
     (listItem: any, requestType: 'POST' | 'DELETE') => {
-      setIncompleteList((list: any[]) => 
+      setFilteredList((list: any[]) => 
         requestType === 'POST' 
           ? [...list, listItem]
           : list.filter((item) => item.id !== listItem.id)
@@ -24,7 +24,7 @@ function Home() {
     const fetchLists = async () => {
       try {
         const response = await axios.get<List[]>('http://localhost:3000/list');
-        setIncompleteList(response.data);
+        setFilteredList(response.data)
         const filteredList = response.data.filter(item => item.completed !== true);
         setFilteredList(filteredList);
       } catch (error) {
@@ -33,7 +33,7 @@ function Home() {
     };
 
     fetchLists();
-  }, [])
+  }, [filteredList])
 
   return (
     <>
