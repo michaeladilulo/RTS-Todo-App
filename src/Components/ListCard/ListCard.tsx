@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 import DeleteIconTrash from '../TrashDeleteIcon/TrashDeleteIcon';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import { Button } from '@mui/material';
 import './ListCard.css';
 
 interface CardProps {
@@ -19,10 +18,6 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
   const [listComplete, setListComplete] = useState<boolean>(completed ?? false);
   const [completionDate, setCompletionDate] = useState<string | null>(completedOn ?? '');
 
-  const [creationBy, setCreatedBy] = useState('')
-  const [cardTitle, setCardTitle] = useState('')
-  const [cardId, setCardId] = useState('')
-
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const date = dayjs().format('YYYY-MM-DD');
     const isChecked = event.target.checked;
@@ -30,10 +25,6 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
     console.log(isChecked)
     setListComplete(isChecked);
     setCompletionDate(date)
-
-    setCreatedBy(createdBy);
-    setCardTitle(title);
-    setCardId(id);
     
     try {
       await axios.put(`http://localhost:3000/list/${id}`, {
@@ -56,32 +47,10 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
     }
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = {
-      completionGoal,
-      completedOn: completionDate,
-      createdBy,
-      title,
-      id,
-      completed: listComplete,
-    };
-
-    try {
-      await axios.put(`http://localhost:3000/list/${id}`, formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-    } catch (error) {
-      console.error('Error submitting form data:', error);
-    }
-  };
-
   return (
     <span className='card-container'>
     <DeleteIconTrash id={id} renderingLists={renderingLists}/>    
-    <form onSubmit={handleSubmit}>
+    <div>
       <div className='card-content'>
       <div>
         <span className='card-header-create-complete'>
@@ -101,10 +70,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
         </span>
       </div>
       </div>
-      <div className='list-form-button-container'>
-      <Button variant='contained' color='success' type='submit' className='list-form-button'>Save Changes</Button>
-      </div>
-    </form>
+    </div>
     </span>      
   )
 }

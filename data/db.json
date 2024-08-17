@@ -1,59 +1,11 @@
 {
   "list": [
     {
-      "completionGoal": "2024-08-24",
-      "completedOn": "2024-08-16",
-      "createdBy": "Mike",
-      "title": "Coding",
-      "id": "1a5f",
-      "completed": false
-    },
-    {
       "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-16",
-      "createdBy": "Mike",
-      "title": "Pet Maya",
-      "id": "aec7",
-      "completed": true
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-16",
+      "completedOn": null,
       "createdBy": "Mike",
       "title": "Golfing",
-      "id": "509e",
-      "completed": false
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-16",
-      "createdBy": "Mike",
-      "title": "Sleeping",
-      "id": "0476",
-      "completed": false
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-16",
-      "createdBy": "Mike",
-      "title": "Petting Maya",
-      "id": "6292",
-      "completed": false
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-16",
-      "createdBy": "Mike",
-      "title": "Video Games",
-      "id": "8654",
-      "completed": true
-    },
-    {
-      "completionGoal": "2024-08-24",
-      "completedOn": "2024-08-16",
-      "createdBy": "Mike",
-      "title": "Woodworking",
-      "id": "98ec",
+      "id": "32d8",
       "completed": false
     }
   ]
