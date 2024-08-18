@@ -1,11 +1,101 @@
-import React from 'react';
+import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import React, { ChangeEvent, useState } from 'react';
 import './TaskForm.css';
+import axios from 'axios';
+
+type FormData = {
+    title: string,
+    completed: boolean,
+  }
 
 const TaskForm = () => {
+    const [formData, setFormData] = useState<FormData>({
+        title: '',
+        completed: false
+      });
+
+      const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        const {name, value, type, checked} = e.target;
+        setFormData(previousState => ({
+          ...previousState,
+          [name]: type === 'checkbox' ? checked : value
+        }))
+      }
+
+      const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        e.preventDefault();
+      
+        try {
+          const response = await axios.post(`http://localhost:3000/list`,
+            formData
+          )
+          console.log(response.data)
+        //   renderingLists(response.data, 'POST')
+      
+          setFormData({
+            title: '',
+            completed: false
+          })
+        } catch (error) {
+          console.error('Error', error)
+        }
+      }
+
     return (
         <>
         {/* TODO: This will just be the way I stub it out now to get it to work, can refactor and talk to somebody about it later on */}
-        {/* Create a checkbox in the top right of the list card that has a label of 'Create Tasks for lists' */}
+
+<Container component='main' maxWidth='xs' className='form-container'>
+    <Box 
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}>
+    <Typography component='p' className='form-header-title'>
+        Create New Task
+    </Typography>
+    <Box component='form' noValidate onSubmit={handleSubmit} >
+        <Grid justifyContent={'center'} alignItems={'center'}>
+                <Grid item xs={12} sm={8}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <input
+                            type='checkbox'
+                            id='completed'
+                            name='completed'
+                            checked={formData.completed}
+                            onChange={handleChange}
+                            className='form-input-checkbox'
+                        />
+                    </Box>
+                </Grid>
+            <Grid sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                <TextField 
+                    autoComplete='given-name'
+                    required
+                    fullWidth
+                    id='taskTitle'
+                    label='Task Title'
+                    onChange={handleChange}
+                    value={formData.title}
+                    name='title'
+                    autoFocus
+                />
+            <Grid item xs={12} sm={8} sx={{ml:1}}>
+                <Button
+                    type='submit'
+                    fullWidth
+                    variant='contained'
+                    color='success'
+                    >Submit
+                </Button>
+            </Grid>
+            </Grid>
+        </Grid>
+    </Box>
+    </Box>
+</Container>
+        {/* DONE: Create a checkbox in the top right of the list card that has a label of 'Create Tasks for lists' */}
         {/* When Checked => This form will show */}
         {/* When Not Checked => This form will not show */}
         {/* This checkbox when checked will run an api call that has an endpoint of List/${listId} */}

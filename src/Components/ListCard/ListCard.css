@@ -15,6 +15,21 @@
     flex-direction: column;
 }
 
+.card-selection-and-deletion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-for-list-selection {
+    font-size: 11px;
+}
+
+.text-checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
 .card-content {
     flex: 1 0 auto;
 }

@@ -3,6 +3,8 @@ import ListDeleteIcon from '../ListDeleteIcon/ListDeleteIcon';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import './ListCard.css';
+import ListSelectionCheckbox from '../ListSelectionCheckbox/ListSelectionCheckbox';
+import TaskForm from '../TaskForm/TaskForm';
 
 interface CardProps {
   createdBy: string,
@@ -17,10 +19,12 @@ interface CardProps {
 const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed, renderingLists}) => {
   const [listComplete, setListComplete] = useState<boolean>(completed ?? false);
   const [completionDate, setCompletionDate] = useState<string | null>(completedOn ?? '');
+  const [checked, setChecked] = useState(false);
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const date = dayjs().format('YYYY-MM-DD');
     const isChecked = event.target.checked;
+
     
     console.log(isChecked)
     setListComplete(isChecked);
@@ -40,16 +44,26 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
           'Content-Type': 'application/json',
         }
       });
-
+      
       setListComplete(isChecked);
     } catch (error) {
       console.error('Error updating list data:', error);
     }
   };
+  
+  const handleCheckmarkChange = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
+    setChecked(event.target.checked);
+  }
+
 
   return (
     <span className='card-container'>
-    <ListDeleteIcon id={id} renderingLists={renderingLists}/>    
+      <span className='card-selection-and-deletion'>
+        <ListDeleteIcon id={id} renderingLists={renderingLists}/>
+        <div className='text-checkbox-container'>
+        <span className='text-for-list-selection'>Click Checkbox To Add Tasks:</span><ListSelectionCheckbox id={id} checked={checked} onChange={handleCheckmarkChange}/>  
+        </div>
+      </span>
     <div>
       <div className='card-content'>
       <div>
@@ -60,6 +74,9 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
       </div>
       <div className='list-title'>
         <h2>{title}</h2>
+      </div>
+      <div>
+        {checked ? <TaskForm /> : null}
       </div>
       <div className='card-footer'>
         <span className='card-checkbox'>

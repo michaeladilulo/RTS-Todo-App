@@ -6,3 +6,10 @@ export type List = {
     completed: boolean;
     id: string;
 }
+
+export type Task = {
+    title: string;
+    id: string;
+    completed: boolean;
+    listId: string;
+}
