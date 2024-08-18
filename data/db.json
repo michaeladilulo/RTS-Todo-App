@@ -18,5 +18,17 @@
     }
   ],
   "task": [
+    {
+      "id": "1c01",
+      "title": "Coding Task Only",
+      "completed": false,
+      "listId": "b6df"
+    },
+    {
+      "id": "3db6",
+      "title": "Golfing Task Only",
+      "completed": false,
+      "listId": "b605"
+    }
   ]
 }
