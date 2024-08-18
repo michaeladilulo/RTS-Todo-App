@@ -1,0 +1,18 @@
+.task-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-title-container {
+    display: flex;
+}
+
+.css-1sszw6i-MuiButtonBase-root-MuiButton-root {
+    height: 5px !important;
+    font-size: 7px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    margin-left: 7px !important;
+    margin-right: 5px !important;
+}

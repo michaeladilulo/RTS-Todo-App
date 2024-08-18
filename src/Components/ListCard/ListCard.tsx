@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import ListDeleteIcon from '../ListDeleteIcon/ListDeleteIcon';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import './ListCard.css';
 import ListSelectionCheckbox from '../ListSelectionCheckbox/ListSelectionCheckbox';
 import TaskForm from '../TaskForm/TaskForm';
+import Task from '../Task/Task';
 
 interface CardProps {
   createdBy: string,
@@ -20,6 +21,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
   const [listComplete, setListComplete] = useState<boolean>(completed ?? false);
   const [completionDate, setCompletionDate] = useState<string | null>(completedOn ?? '');
   const [checked, setChecked] = useState(false);
+  const [taskList, setTaskList] = useState<any | null>(null);
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const date = dayjs().format('YYYY-MM-DD');
@@ -56,6 +58,21 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
   }
 
 
+  useEffect(() => {
+    const fetchLists = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/task');
+        setTaskList(response.data)
+      } catch (error) {
+        console.error('Error Fetching Items:', error)
+      }
+    };
+
+    fetchLists();
+
+  }, [])
+
+
   return (
     <span className='card-container'>
       <span className='card-selection-and-deletion'>
@@ -76,7 +93,19 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
         <h2>{title}</h2>
       </div>
       <div>
-        {checked ? <TaskForm listId={id} /> : null}
+        {checked ? <TaskForm listId={id} title={title} completed={false} /> : null}
+      </div>
+      <div>
+        {/* Array of Objects */}
+    {taskList && Array.isArray(taskList) && taskList.length > 0 ? (
+      taskList.map(x => (
+        <div className='list-card' key={x.id}>
+          <Task title={x.title}  />
+        </div>
+      ))
+    ) : (
+      <div>No Data To Display</div>
+    )}
       </div>
       <div className='card-footer'>
         <span className='card-checkbox'>
