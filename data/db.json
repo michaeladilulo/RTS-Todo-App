@@ -2,11 +2,11 @@
   "list": [
     {
       "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-17",
+      "completedOn": null,
       "createdBy": "Mike",
       "title": "Coding",
       "id": "b6df",
-      "completed": true
+      "completed": false
     },
     {
       "completionGoal": "2024-08-18",
@@ -15,38 +15,8 @@
       "title": "Golfing",
       "id": "b605",
       "completed": false
-    },
-    {
-      "completionGoal": "2024-08-31",
-      "completedOn": null,
-      "createdBy": "Mike",
-      "title": "Pack for Wallowa",
-      "id": "7208",
-      "completed": false
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": null,
-      "createdBy": "Mike",
-      "title": "Coding",
-      "id": "3723",
-      "completed": false
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": null,
-      "createdBy": "Mike",
-      "title": "Sleeping",
-      "id": "509d",
-      "completed": false
-    },
-    {
-      "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-18",
-      "createdBy": "Mike",
-      "title": "Working",
-      "id": "9434",
-      "completed": true
     }
+  ],
+  "task": [
   ]
 }
