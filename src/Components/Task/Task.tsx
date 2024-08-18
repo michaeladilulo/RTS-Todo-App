@@ -9,14 +9,14 @@ type TaskProps = {
 const Task:FC<TaskProps> = ({title}) => {
   return (
     <div className='task-container'>
-        <div className='input-title-container'>
+        <span className='input-title-container'>
             <input type='checkbox'/>
-            <p>{title}</p>
-        </div>
-        <div>
+            <p className='task-title'>{title}</p>
+        </span>
+        <span>
             <Button variant='contained' color="success">Edit</Button>
             <Button variant='contained' color='error'>Delete</Button>
-        </div>
+        </span>
     </div>
   )
 }

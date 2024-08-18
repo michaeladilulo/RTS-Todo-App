@@ -99,9 +99,9 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
         {/* Array of Objects */}
     {taskList && Array.isArray(taskList) && taskList.length > 0 ? (
       taskList.map(x => (
-        <div className='list-card' key={x.id}>
+        <span className='task-card' key={x.id}>
           <Task title={x.title}  />
-        </div>
+        </span>
       ))
     ) : (
       <div>No Data To Display</div>
