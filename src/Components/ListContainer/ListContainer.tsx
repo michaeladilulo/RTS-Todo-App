@@ -9,6 +9,7 @@ interface ListItem {
   title: string;
   completedOn: string | null;
   completed?: boolean;
+  listId: string;
 }
 
 const ListContainer: FC = () => {
@@ -42,7 +43,8 @@ const ListContainer: FC = () => {
           title={listItem.title}
           completedOn={listItem.completedOn}
           completed={listItem.completed}
-          renderingLists={renderLists} 
+          renderingLists={renderLists}
+          listId={listItem.listId}
         />
       ))}
     </div>

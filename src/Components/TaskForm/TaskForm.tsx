@@ -1,17 +1,23 @@
 import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import './TaskForm.css';
 import axios from 'axios';
 
 type FormData = {
     title: string,
     completed: boolean,
+    listId: string;
   }
 
-const TaskForm = () => {
+  type ListForTaskProps = {
+    listId: string;
+  }
+
+const TaskForm:FC<ListForTaskProps> = ({listId}) => {
     const [formData, setFormData] = useState<FormData>({
         title: '',
-        completed: false
+        completed: false,
+        listId: listId
       });
 
       const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -26,7 +32,7 @@ const TaskForm = () => {
         e.preventDefault();
       
         try {
-          const response = await axios.post(`http://localhost:3000/list`,
+          const response = await axios.post(`http://localhost:3000/list/${listId}/task`,
             formData
           )
           console.log(response.data)
@@ -34,7 +40,8 @@ const TaskForm = () => {
       
           setFormData({
             title: '',
-            completed: false
+            completed: false,
+            listId: listId
           })
         } catch (error) {
           console.error('Error', error)

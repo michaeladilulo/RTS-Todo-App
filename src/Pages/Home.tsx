@@ -7,24 +7,25 @@ import { List } from '../Types/Types';
 function Home() {
   const [incompleteList, setIncompleteList] = useState<any | null>(null);
   const [filteredList, setFilteredList] = useState<any | null>(null);
+  const [shouldFetch, setShouldFetch] = useState<boolean>(true);
   
+
 
   const renderLists = useCallback(
     (listItem: any, requestType: 'POST' | 'DELETE') => {
       setFilteredList((list: any[]) => 
-        requestType === 'POST' 
-          ? [...list, listItem]
-          : list.filter((item) => item.id !== listItem.id)
+        list.filter((item) => item.id !== listItem.id)
       );
+      setShouldFetch(true);
     },
-    []
-  );
+    []);
+
+
 
   useEffect(() => {
     const fetchLists = async () => {
       try {
         const response = await axios.get<List[]>('http://localhost:3000/list');
-        setFilteredList(response.data)
         const filteredList = response.data.filter(item => item.completed !== true);
         setFilteredList(filteredList);
       } catch (error) {
@@ -32,9 +33,13 @@ function Home() {
       }
     };
 
+    
+    if(shouldFetch) {
     fetchLists();
-  }, [filteredList])
+    }
 
+  }, [shouldFetch])
+  
   return (
     <>
     <ListForm renderingLists={renderLists}/>
@@ -43,7 +48,7 @@ function Home() {
     {filteredList && Array.isArray(filteredList) && filteredList.length > 0 ? (
       filteredList.map(x => (
         <div className='list-card' key={x.id}>
-          <ListCard createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed} renderingLists={renderLists} />
+          <ListCard listId={x.listId} createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed} renderingLists={renderLists} />
         </div>
       ))
     ) : (

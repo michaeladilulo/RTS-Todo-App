@@ -8,15 +8,16 @@ import TaskForm from '../TaskForm/TaskForm';
 
 interface CardProps {
   createdBy: string,
-  completionGoal: null,
+  completionGoal: null | string,
   title: string,
   completedOn: string | null,
   id: string;
   completed?: boolean;
   renderingLists: (listItem: any, requestType: 'POST' | 'DELETE') => void;
+  listId: string;
 }
 
-const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed, renderingLists}) => {
+const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed, renderingLists, listId}) => {
   const [listComplete, setListComplete] = useState<boolean>(completed ?? false);
   const [completionDate, setCompletionDate] = useState<string | null>(completedOn ?? '');
   const [checked, setChecked] = useState(false);
@@ -61,7 +62,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
       <span className='card-selection-and-deletion'>
         <ListDeleteIcon id={id} renderingLists={renderingLists}/>
         <div className='text-checkbox-container'>
-        <span className='text-for-list-selection'>Click Checkbox To Add Tasks:</span><ListSelectionCheckbox id={id} checked={checked} onChange={handleCheckmarkChange}/>  
+        <span className='text-for-list-selection'>Click Checkbox To Add Tasks:</span><ListSelectionCheckbox id={id} checked={checked} onChange={handleCheckmarkChange} listId={id}/>  
         </div>
       </span>
     <div>
@@ -76,7 +77,7 @@ const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completed
         <h2>{title}</h2>
       </div>
       <div>
-        {checked ? <TaskForm /> : null}
+        {checked ? <TaskForm listId={id} /> : null}
       </div>
       <div className='card-footer'>
         <span className='card-checkbox'>

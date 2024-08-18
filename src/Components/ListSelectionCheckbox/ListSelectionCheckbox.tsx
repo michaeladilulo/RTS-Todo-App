@@ -5,12 +5,13 @@ import axios from 'axios'
 type ListSelectionCheckboxProps = {
     id: string;
     checked: boolean;
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void; // Add onChange prop
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    listId: string;
 }
 
-const ListSelectionCheckbox:FC<ListSelectionCheckboxProps> = ({id, checked, onChange}) => {
+const ListSelectionCheckbox:FC<ListSelectionCheckboxProps> = ({id, checked, onChange, listId}) => {
 
-    const handleClick = async (event: ChangeEvent<HTMLInputElement>) => {
+    const handleClickForListId = async (event: ChangeEvent<HTMLInputElement>) => {
         try {
            const response = await axios.get(`http://localhost:3000/list/${id}`, {
                 headers: {
@@ -18,6 +19,7 @@ const ListSelectionCheckbox:FC<ListSelectionCheckboxProps> = ({id, checked, onCh
                 }
             })
             console.log(response.data)
+            listId = response.data.id;
         } catch (error) {
             console.error(error)
         }
@@ -26,7 +28,7 @@ const ListSelectionCheckbox:FC<ListSelectionCheckboxProps> = ({id, checked, onCh
     return (
         <span className='checkbox-container'>
         <input type='checkbox' checked={checked} onChange={(e) => {
-            handleClick(e);
+            handleClickForListId(e);
             onChange(e);
         }} />
         </span>
