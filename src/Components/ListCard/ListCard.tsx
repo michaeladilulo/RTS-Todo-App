@@ -14,10 +14,9 @@ interface CardProps {
   id: string;
   completed?: boolean;
   renderingLists: (listItem: any, requestType: 'POST' | 'DELETE') => void;
-  listId: string;
 }
 
-const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed, renderingLists, listId}) => {
+const ListCard:FC<CardProps> = ({id, createdBy, completionGoal, title, completedOn, completed, renderingLists}) => {
   const [listComplete, setListComplete] = useState<boolean>(completed ?? false);
   const [completionDate, setCompletionDate] = useState<string | null>(completedOn ?? '');
   const [checked, setChecked] = useState(false);

@@ -41,7 +41,6 @@ function CompletedLists() {
           filteredList.map(x => (
             <div className='list-card' key={x.id}>
               <ListCard
-                listId={x.listId}
                 createdBy={x.createdBy}
                 completionGoal={x.completionGoal || 'N/A'} 
                 title={x.title}

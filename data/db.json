@@ -18,11 +18,11 @@
     },
     {
       "completionGoal": "2024-08-31",
-      "completedOn": "2024-08-17",
+      "completedOn": null,
       "createdBy": "Mike",
       "title": "Pack for Wallowa",
       "id": "7208",
-      "completed": true
+      "completed": false
     },
     {
       "completionGoal": "2024-08-17",
@@ -42,7 +42,7 @@
     },
     {
       "completionGoal": "2024-08-17",
-      "completedOn": "2024-08-17",
+      "completedOn": "2024-08-18",
       "createdBy": "Mike",
       "title": "Working",
       "id": "9434",

@@ -48,7 +48,7 @@ function Home() {
     {filteredList && Array.isArray(filteredList) && filteredList.length > 0 ? (
       filteredList.map(x => (
         <div className='list-card' key={x.id}>
-          <ListCard listId={x.listId} createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed} renderingLists={renderLists} />
+          <ListCard createdBy={x.createdBy} completionGoal={x.completionGoal} title={x.title} completedOn={x.completedOn} id={x.id} completed={x.completed} renderingLists={renderLists} />
         </div>
       ))
     ) : (
